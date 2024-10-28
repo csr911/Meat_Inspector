@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meat Freshness Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Meat Freshness Prediction</h1>
+    </header>
+
+    <div class="container">
+        <h2>Upload an Image</h2>
+        <form method="POST" action="/predict" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" required>
+            <br><br>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if uploaded_image %}
+        <div class="image-preview">
+            <h3>Uploaded Image</h3>
+            <img src="{{ uploaded_image }}" alt="Uploaded Image">
+        </div>
+        <div class="result">
+            <h2>Prediction: <span>{{ prediction_text }}</span></h2>
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Meat Freshness Predictor | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
